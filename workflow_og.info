@@ -1,0 +1,7 @@
+; $Id$
+name = "Workflow OG"
+description = "This is a module that allows you to post a node in an og group and promote it's workflow state from one interface."
+core = 6.x
+dependencies[] = og
+dependencies[] = workflow
+version = "6.x-1.0-alpha1"

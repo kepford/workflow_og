@@ -1,0 +1,1 @@
+This is a module that allows you to post a node in an og group and promote it's workflow state from one interface.
