@@ -62,7 +62,7 @@ function workflow_og_menu() {
   $items['node/%node/promote'] = array(
     'title' => 'Promote',
     'page callback' => 'promote_workflow_og',
-    'access callback' => 'user_access'
+    'access callback' => 'user_access',
     'access arguments' => array('promote_workflow_og'),
     'type' => MENU_LOCAL_TASK,
   );
