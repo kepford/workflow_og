@@ -66,7 +66,18 @@ function workflow_og_menu() {
     'type' => MENU_LOCAL_TASK,
   );
 
- /**
+  // By using the MENU_CALLBACK type, we can register the callback for this
+  // path but do not have the item show up in the menu; the admin is not allowed
+  // to enable the item in the menu, either.
+  //
+  // Notice that the 'page arguments' is an array of numbers. These will be
+  // replaced with the corresponding parts of the menu path. In this case a 0
+  // would be replaced by 'bar', a 1 by 'baz', and like wise 2 and 3 will be
+  // replaced by what ever the user provides. These will be passed as arguments
+  // to the workflow_og_baz() function.
+}
+
+/**
  * A simple page callback.
  *
  * Page callbacks are required to return the entire page. The content
