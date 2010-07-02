@@ -19,6 +19,7 @@ function workflow_og_perm() {
   return array(
     'access foo content',
     'access baz content',
+    'promote workflow_og'
   );
 }
 
@@ -60,10 +61,11 @@ function workflow_og_perm() {
 function workflow_og_menu() {
   // This is the minimum information you can provide for a menu item. This menu
   // item will be created in the default menu: Navigation.
-  $items['workflow_og/foo'] = array(
-    'title' => 'Workflow OG: (foo)',
-    'page callback' => 'workflow_og_foo',
-    'access arguments' => array('access foo content'),
+  $items['node/%node/promote'] = array(
+    'title' => 'Promote',
+    'page callback' => 'promote_workflow_og',
+    'access arguments' => array('promote_workflow_og'),
+    'type' => MENU_LOCAL_TASK,
   );
 
   // By using the MENU_CALLBACK type, we can register the callback for this
@@ -97,7 +99,7 @@ function workflow_og_menu() {
  * If you do not want to use the theme system (for example for outputting an
  * image or XML), you should print the content yourself and not return anything.
  */
-function workflow_og_foo() {
+function promote_workflow_og() {
   return '<p>' . t('Here is where our form will live.') . ' </p>';
 }
 
