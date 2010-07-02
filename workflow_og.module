@@ -59,7 +59,7 @@ function workflow_og_perm() {
 function workflow_og_menu() {
   // This is the minimum information you can provide for a menu item. This menu
   // item will be created in the default menu: Navigation.
-  $items['node/%node/workflow_og'] = array(
+  $items['node/%node/promote'] = array(
     'title' => 'Promote',
     'page callback' => 'promote_workflow_og',
     'file path' => 'workflow_og.pages.inc',
