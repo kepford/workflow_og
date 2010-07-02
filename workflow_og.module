@@ -75,7 +75,7 @@ function workflow_og_menu() {
   // would be replaced by 'bar', a 1 by 'baz', and like wise 2 and 3 will be
   // replaced by what ever the user provides. These will be passed as arguments
   // to the workflow_og_baz() function.
-  $items['example/baz/%/%'] = array(
+  $items['workflow_og/baz/%/%'] = array(
     'title' => 'Baz',
     'page callback' => 'workflow_og_baz',
     'page arguments' => array(2, 3),
