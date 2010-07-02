@@ -17,8 +17,6 @@
  */
 function workflow_og_perm() {
   return array(
-    'access foo content',
-    'access baz content',
     'promote workflow_og'
   );
 }
