@@ -17,6 +17,8 @@
  */
 function workflow_og_perm() {
   return array(
+    'access foo content',
+    'access baz content',
     'promote workflow_og'
   );
 }
@@ -59,13 +61,31 @@ function workflow_og_perm() {
 function workflow_og_menu() {
   // This is the minimum information you can provide for a menu item. This menu
   // item will be created in the default menu: Navigation.
-  $items['node/%node/promote'] = array(
+  $items['node/%node/workflow_og'] = array(
     'title' => 'Promote',
     'page callback' => 'promote_workflow_og',
-    'access callback' => 'user_access',
     'access arguments' => array('promote_workflow_og'),
     'type' => MENU_LOCAL_TASK,
   );
+
+  // By using the MENU_CALLBACK type, we can register the callback for this
+  // path but do not have the item show up in the menu; the admin is not allowed
+  // to enable the item in the menu, either.
+  //
+  // Notice that the 'page arguments' is an array of numbers. These will be
+  // replaced with the corresponding parts of the menu path. In this case a 0
+  // would be replaced by 'bar', a 1 by 'baz', and like wise 2 and 3 will be
+  // replaced by what ever the user provides. These will be passed as arguments
+  // to the workflow_og_baz() function.
+  $items['workflow_og/baz/%/%'] = array(
+    'title' => 'Baz',
+    'page callback' => 'workflow_og_baz',
+    'page arguments' => array(2, 3),
+    'access arguments' => array('access baz content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
 }
 
 /**
@@ -81,4 +101,25 @@ function workflow_og_menu() {
  */
 function promote_workflow_og() {
   return '<p>' . t('Here is where our form will live.') . ' </p>';
+}
+
+/**
+ * A more complex page callback that takes arguments.
+ *
+ * The arguments are passed in from the page URL. The in our hook_menu
+ * implementation we instructed the menu system to extract the last two
+ * parameters of the path and pass them to this function as arguments.
+ */
+function workflow_og_baz($alice, $bob) {
+  // Make sure you don't trust the URL to be safe! Always check for threats.
+  if (!is_numeric($alice) || !is_numeric($bob)) {
+    // We will just show a standard "access denied" page in this case.
+    return drupal_access_denied();
+  }
+
+  $list[] = t("Alice's number was @number.", array('@number' => $alice));
+  $list[] = t("Bob's number was @number.", array('@number' => $bob));
+  $list[] = t('The total was @number.', array('@number' => $alice + $bob));
+
+  return t("baz content") . theme('item_list', $list);
 }
