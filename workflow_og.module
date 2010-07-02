@@ -98,7 +98,7 @@ function workflow_og_menu() {
  * image or XML), you should print the content yourself and not return anything.
  */
 function workflow_og_foo() {
-  return '<p>' . t('The quick brown fox jumps over the lazy dog.') . ' </p>';
+  return '<p>' . t('Here is where our form will live.') . ' </p>';
 }
 
 /**
