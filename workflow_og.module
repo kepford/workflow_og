@@ -62,7 +62,6 @@ function workflow_og_menu() {
   $items['node/%node/promote'] = array(
     'title' => 'Promote',
     'description' => 'Manage Approval',
-//    'page callback' => 'promote_workflow_og',
     'page callback' => 'drupal_get_form',
 	'page arguments' => array('promote_workflow_og'),
     'file path' => 'workflow_og.pages.inc',
