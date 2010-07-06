@@ -20,5 +20,16 @@
  * image or XML), you should print the content yourself and not return anything.
  */
 function promote_workflow_og() {
-  return '<p>' . t('Here is where our form will live.') . ' </p>';
+  
+  $form['description'] = array(
+    '#type' => 'item',
+    '#title' => t('A form with nothing but a textfield'),
+  );
+  // This is the first form element. It's a textfield with a label, "Name"
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Name'),
+  );
+  return $form;
+
 }

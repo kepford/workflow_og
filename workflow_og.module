@@ -61,6 +61,7 @@ function workflow_og_menu() {
   // item will be created in the default menu: Navigation.
   $items['node/%node/promote'] = array(
     'title' => 'Promote',
+    'description' => 'Manage Approval',
 //    'page callback' => 'promote_workflow_og',
     'page callback' => 'drupal_get_form',
 	'page arguments' => array('promote_workflow_og'),
