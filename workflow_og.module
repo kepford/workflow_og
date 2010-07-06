@@ -65,7 +65,7 @@ function workflow_og_menu() {
 //    'page callback' => 'promote_workflow_og',
     'page callback' => 'drupal_get_form',
 	'page arguments' => array('promote_workflow_og'),
-//    'file path' => 'workflow_og.pages.inc',
+    'file path' => 'workflow_og.pages.inc',
     'access arguments' => array('promote_workflow_og'),
     'type' => MENU_LOCAL_TASK,
   );
