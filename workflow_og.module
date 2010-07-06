@@ -63,7 +63,7 @@ function workflow_og_menu() {
     'title' => 'Promote',
     'description' => 'Manage Approval',
     'page callback' => 'drupal_get_form',
-	'page arguments' => array('promote_workflow_og'),
+	'page arguments' => array('workflow_og_promote_tab'),
     'file path' => 'workflow_og.pages.inc',
     'access arguments' => array('promote_workflow_og'),
     'type' => MENU_LOCAL_TASK,

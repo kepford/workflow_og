@@ -19,7 +19,7 @@
  * If you do not want to use the theme system (for example for outputting an
  * image or XML), you should print the content yourself and not return anything.
  */
-function promote_workflow_og() {
+function workflow_og_promote_tab() {
   
   $form['description'] = array(
     '#type' => 'item',
