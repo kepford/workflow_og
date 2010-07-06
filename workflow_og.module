@@ -59,8 +59,8 @@ function workflow_og_perm() {
 function workflow_og_menu() {
   // This is the minimum information you can provide for a menu item. This menu
   // item will be created in the default menu: Navigation.
-  $items['node/%node/promote'] = array(
-    'title' => 'Promote',
+  $items['node/%node/workflow_og'] = array(
+    'title' => 'Workflow_OG',
     'description' => 'Manage Approval',
     'type' => MENU_LOCAL_TASK,
     'access arguments' => array('promote_workflow_og'),
