@@ -8,7 +8,7 @@
  *Menu callbacks for Workflow_og.
  */ 
 
-function workflow_og_promote(&$form, &$form_state, &$node) {
+function workflow_og_promote(&$form, &$form_state) {
   $form['description'] = array(
     '#type' => 'item',
     '#title' => t('Promote application to appropriate group'),
@@ -35,6 +35,7 @@ function workflow_og_promote(&$form, &$form_state, &$node) {
     '#value' => 'Cancel',
     '#validate' => array('workflow_og_clear'),
   );
+  
   return $form;
 }
 
