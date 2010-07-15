@@ -15,6 +15,7 @@ function workflow_og_promote(&$form_state) {
   );
 
  dprint_r($_SESSION);
+ dsm('$gid');
 
   $form['promote_audience'] = array(
   '#type' => 'radios', 
