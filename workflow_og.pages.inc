@@ -14,7 +14,7 @@ function workflow_og_promote(&$form, &$form_state) {
     '#title' => t('Promote application to appropriate group'),
   );
   
- dprint_r($og_gids);
+ dprint_r('Hello there');
  
 
   $form['promote_audience'] = array(
