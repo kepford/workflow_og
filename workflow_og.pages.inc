@@ -11,14 +11,9 @@
 function workflow_og_promote(&$form_state) {
   $form['description'] = array(
     '#type' => 'item',
-    '#title' => t('A simple form with a submit button'),
+    '#title' => t('Promote application to appropriate group.'),
   );
 
-  $form['name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Name'),
-  );
-  
   $form['promote_audience'] = array(
   '#type' => 'radios', 
   '#title' => t('Assign to Division'), 
