@@ -33,6 +33,13 @@ function workflow_og_promote(&$form_state) {
     '#type' => 'textfield',
     '#title' => t('Name'),
   );
+  
+  $form['promote_audience'] = array(
+  '#type' => 'radios', 
+  '#title' => t('Preview comment'), 
+  '#default_value' => t('Optional', 1), 
+  '#options' => array(t('Optional'), t('Required')),
+);
 
   // Adds a simple submit button that refreshes the form and clears its contents -- this is the default behavior for forms.
   $form['submit'] = array(
