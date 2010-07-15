@@ -8,7 +8,7 @@
  *Menu callbacks for Workflow_og.
  */ 
 
-function workflow_og_promote(&$form, &$form_state['og_gids']) {
+function workflow_og_promote(&$form, &$form_state) {
   $form['description'] = array(
     '#type' => 'item',
     '#title' => t('Promote application to appropriate group'),
