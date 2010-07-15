@@ -14,9 +14,7 @@ function workflow_og_promote(&$form, &$form_state, &$node) {
     '#title' => t('Promote application to appropriate group'),
   );
 
- dpm($nid);
 
- 
 
   $form['promote_audience'] = array(
   '#type' => 'radios', 
