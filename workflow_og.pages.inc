@@ -19,17 +19,25 @@
  * If you do not want to use the theme system (for example for outputting an
  * image or XML), you should print the content yourself and not return anything.
  */
-function workflow_og_promote_tab() {
-  
+/**
+ * This is Example 2, a basic form with a submit button.
+ * @see http://drupal.org/node/717726
+ */
+function workflow_og_promote(&$form_state) {
   $form['description'] = array(
     '#type' => 'item',
-    '#title' => t('A form with nothing but a textfield'),
+    '#title' => t('A simple form with a submit button'),
   );
-  // This is the first form element. It's a textfield with a label, "Name"
+
   $form['name'] = array(
     '#type' => 'textfield',
     '#title' => t('Name'),
   );
-  return $form;
 
+  // Adds a simple submit button that refreshes the form and clears its contents -- this is the default behavior for forms.
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
 }

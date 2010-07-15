@@ -57,34 +57,18 @@ function workflow_og_perm() {
  * examples for hook_menu().
  */
 function workflow_og_menu() {
-  // This is the minimum information you can provide for a menu item. This menu
-  // item will be created in the default menu: Navigation.
-  $items['node/%node/promote'] = array(
-    'title' => 'Promote',
+ $items['node/%/promote'] = array(
+    'title' => t('Promote'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('workflow_og_promote'),
+    'access callback' => TRUE,
+    'description' => t('Tutorial 2: Form with a submit button'),
     'type' => MENU_LOCAL_TASK,
-    'access arguments' => array('promote_workflow_og'),
-    'page callback' => 'workflow_og_promote_tab',
-/* 	'page arguments' => array(1), */
-/*     'file path' => 'workflow_og.pages.inc', */
-/*     'weight' => 200, */
-   );
+    'file' => 'workflow_og.pages.inc',
+  );
 
 
   return $items;
 }
 
 
-function workflow_og_promote_tab() {
-  
-  $form['description'] = array(
-    '#type' => 'item',
-    '#title' => t('A form with nothing but a textfield'),
-  );
-  // This is the first form element. It's a textfield with a label, "Name"
-  $form['name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Name'),
-  );
-  return $form;
-
-}
