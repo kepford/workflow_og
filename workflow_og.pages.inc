@@ -46,5 +46,23 @@ function workflow_og_promote(&$form_state) {
     '#type' => 'submit',
     '#value' => 'Submit',
   );
+  
+   $form['clear'] = array(
+    '#type' => 'submit',
+    '#value' => 'Cancel',
+    '#validate' => array('workflow_og_clear'),
+  );
   return $form;
+}
+
+/**
+ * Validation function for the reset button.
+ *
+ * Setting the $form_state['rebuild'] value to TRUE says that we're going to
+ * rebuild the form.  We also clear the existing values, although values
+ * aren't used in the form builder in this example.
+ */
+function workflow_og_clear($form, &$form_state) {
+    $form_state['rebuild'] = TRUE;
+    unset($form_state['values']);
 }
