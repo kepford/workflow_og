@@ -14,7 +14,7 @@ function workflow_og_promote(&$form_state) {
     '#title' => t('Promote application to appropriate group'),
   );
 
-dsm($gids)
+//dsm($gids);
 
   $form['promote_audience'] = array(
   '#type' => 'radios', 
