@@ -9,11 +9,6 @@
  
  /**
  * Implementation of hook_perm().
- *
- * Since the access to our new custom pages will be granted based on
- * special permissions, we need to define what those permissions are here.
- * This ensures that they are available to enable on the user role
- * administration pages.
  */
 function workflow_og_perm() {
   return array(
@@ -23,38 +18,6 @@ function workflow_og_perm() {
 
 /**
  * Implementation of hook_menu().
- *
- * hook_menu() must be implemented to emit items to place in the main menu.
- * This is a required step for modules wishing to display their own pages,
- * because the process of creating the links also tells Drupal what
- * callback function to use for a given URL. The menu items returned
- * here provide this information to the menu system.
- *
- * With the below menu definitions, URLs will be interpreted as follows:
- *
- * If the user accesses http://example.com/?q=example/foo, then the menu system
- * will first look for a menu item with that path. In this case it will
- * find a match, and execute workflow_og_foo().
- *
- * If the user accesses http://example.com/?q=example, no match will be found,
- * and a 404 page will be displayed. They same will happen for the urls:
- *  - http://example.com/?q=example/baz
- *  - http://example.com/?q=example/baz/1
- *
- * If the user accesses http://example.com/?q=example/baz, the menu system
- * will not find a match, as the menu entries are registered with the form:
- * a/b/c/d. All the elements included in the menu entry definition should be
- * present for the menu system to match the request.
- *
- * If the user accesses http://example.com/?q=example/baz/1/2, the menu system
- * will first look for example/baz/1/2. Not finding a match, it will look for
- * example/baz/1/%. Again not finding a match, it will look for example/baz/%/2. Yet
- * again not finding a match, it will look for example/baz/%/%. This time it finds
- * a match, and so will execute workflow_og_baz(1, 2). Note the parameters
- * being passed; this is a very useful technique.
- *
- * The @link menu_example.module Menu Example @endlink provides extensive
- * examples for hook_menu().
  */
 function workflow_og_menu() {
  $items['node/%/promote'] = array(

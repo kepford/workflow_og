@@ -8,21 +8,6 @@
  *Menu callbacks for Workflow_og.
  */ 
 
-/**
- * A simple page callback.
- *
- * Page callbacks are required to return the entire page. The content
- * is then usually output via a call to theme('page'), where the theme system
- * will then surround the content in the appropriate blocks, navigation, and
- * styling.
- *
- * If you do not want to use the theme system (for example for outputting an
- * image or XML), you should print the content yourself and not return anything.
- */
-/**
- * This is Example 2, a basic form with a submit button.
- * @see http://drupal.org/node/717726
- */
 function workflow_og_promote(&$form_state) {
   $form['description'] = array(
     '#type' => 'item',
@@ -56,11 +41,10 @@ function workflow_og_promote(&$form_state) {
 }
 
 /**
- * Validation function for the reset button.
- *
+ * 
  * Setting the $form_state['rebuild'] value to TRUE says that we're going to
- * rebuild the form.  We also clear the existing values, although values
- * aren't used in the form builder in this example.
+ * rebuild the form.  We also clear the existing values.
+ * 
  */
 function workflow_og_clear($form, &$form_state) {
     $form_state['rebuild'] = TRUE;
