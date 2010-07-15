@@ -13,9 +13,10 @@ function workflow_og_promote(&$form, &$form_state, &$node) {
     '#type' => 'item',
     '#title' => t('Promote application to appropriate group'),
   );
-  
+
+ dprint_r($node);  
  dprint_r('Hello there');
-  dprint_r($node);
+
  
 
   $form['promote_audience'] = array(
