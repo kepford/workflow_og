@@ -23,11 +23,11 @@ function workflow_og_menu() {
  $items['node/%/promote'] = array(
     'title' => t('Promote'),
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('workflow_og_promote'),
+    'page arguments' => array('workflow_og_og_audience'),
     'access callback' => TRUE,
-    'description' => t('Tutorial 2: Form with a submit button'),
+    'description' => t('Promote to group'),
     'type' => MENU_LOCAL_TASK,
-    'file' => 'workflow_og.pages.inc',
+    'file' => 'workflow_og.og_audience.inc',
   );
 
 
