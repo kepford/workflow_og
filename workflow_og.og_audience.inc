@@ -69,5 +69,78 @@ function workflow_og_og_audience(&$form, &$form_state) {
     }
   }
 
+  // Show read only item if we are non-admin, and in simple mode (i.e. non-checkboxes) and at least one group is in querystring
+  $simple = !user_access('administer organic groups') && !variable_get('og_audience_checkboxes', TRUE) && count($gids);
 
+  // determine value of audience multi-select
+  if (count($options) == 1 && $required) {
+    $gids = array_keys($options);
+    $gid = $gids[0];
+    $groups = array($gid);
+    // also show read only mode if user has 1 option and we are in required mode
+    $simple = TRUE;
+  }
+  elseif (!empty($gids)) {
+   // populate field from the querystring if sent
+   $groups = $gids;
+   if (!user_access('administer nodes') && $simple) {
+     // filter out any groups where author is not a member. we cannot rely on fapi to do this when in simple mode.
+     $groups = array_intersect($gids, array_keys($options));
+   }
+  }
+  elseif (isset($node->og_groups)) {
+    $groups = $node->og_groups;
+  }
+  else {
+    $groups = array();
+  }
+  // This is only used by og_access module right now.
+  $form['og_initial_groups'] = array(
+    '#type' => 'value',
+    '#value' => $groups,
+  );
 
+  if (module_exists('content')) {
+    $form['og_nodeapi']['#group'] = 'additional_settings';
+    $form['og_nodeapi']['#weight'] = content_extra_field_weight($form['#node']->type, 'og_nodeapi');
+  }
+
+  // Emit the audience form element.
+  if ($simple) {
+    // 'simple' mode. read only.
+    if (count($groups)) {
+      foreach ($groups as $gid) {
+        $titles[] = $options[$gid];
+        $item_value = implode(', ', $titles);
+      }
+      $form['og_nodeapi']['visible']['og_groups_visible'] = array(
+        '#type' => 'item',
+        '#title' => t('Audience'),
+        '#value' => $item_value
+      );
+      $assoc_groups = drupal_map_assoc($groups);
+
+      // this 'value' element persists the audience value during submit process
+      $form['og_nodeapi']['invisible']['og_groups'] = array('#type' => 'value', '#value' => $assoc_groups);
+    }
+  }
+  elseif ($cnt = count($options, COUNT_RECURSIVE)) {
+    // show multi-select. if less than 20 choices, use checkboxes.
+    $type = $cnt >= 20 || $is_optgroup ? 'select' : 'checkboxes';
+    $max_groups = variable_get('og_max_groups_'.$node->type,'');
+    $description_max_groups = ($max_groups && !user_access('administer nodes')) ? format_plural($max_groups," Limited to !max_groups choice."," Limited to !max_groups choices.", array('!max_groups' => $max_groups)):'';
+    $form['og_nodeapi']['visible']['og_groups'] = array(
+      '#type' => $type,
+      '#title' => t('Audience'),
+      '#attributes' => array('class' => 'og-audience'),
+      '#options' => $type == 'checkboxes' ? array_map('filter_xss', $options) : $options,
+      '#required' => $required,
+      '#description' =>  format_plural(count($options), 'Show this post in this group.', 'Show this post in these groups.') . $description_max_groups,
+      '#default_value' => $groups ? $groups : array(),
+      '#required' => $required,
+      '#multiple' => TRUE);
+  }
+  else if ($required) {
+    form_set_error('title', t('You must <a href="@join">join a group</a> before posting a %type.', array('@join' => url('og'), '%type' => node_get_types('name', $node->type))));
+  }
+}
