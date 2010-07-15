@@ -13,8 +13,14 @@ function workflow_og_promote(&$form_state) {
     '#type' => 'item',
     '#title' => t('Promote application to appropriate group'),
   );
+  global $user;
+  // Determine the selected groups if it is stored in the form_state.
+  if (!empty($form_state['og_gids'][0]) && empty($form_state['og_groups'])) {
+    $gids = explode(',', $form_state['og_gids'][0]);
+  }
 
- dprint_r($gids);
+ dprint_r($og_gids);
+ 
 
   $form['promote_audience'] = array(
   '#type' => 'radios', 
