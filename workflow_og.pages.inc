@@ -14,8 +14,7 @@ function workflow_og_promote(&$form, &$form_state, &$node) {
     '#title' => t('Promote application to appropriate group'),
   );
 
- dprint_r($node);  
- dprint_r('Hello there');
+ dpm($nid);
 
  
 
