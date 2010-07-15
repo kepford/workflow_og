@@ -8,13 +8,13 @@
  *Menu callbacks for Workflow_og.
  */ 
 
-function workflow_og_promote(&$form_state) {
+function workflow_og_promote(&$form, &$form_state) {
   $form['description'] = array(
     '#type' => 'item',
     '#title' => t('Promote application to appropriate group'),
   );
   
- dprint_r($form_state);
+ dprint_r($form);
  
 
   $form['promote_audience'] = array(
