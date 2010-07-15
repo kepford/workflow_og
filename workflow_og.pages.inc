@@ -38,7 +38,7 @@ function workflow_og_promote(&$form_state) {
   '#type' => 'radios', 
   '#title' => t('Assign to Division'), 
   '#default_value' => t('FCC Applied Technology Division', 1), 
-  '#options' => array(t('FCC Applied Technology Division'), t('FCC Fine, Performing and Communication Arts Division'), t('FCC Fine, Performing and Communication Arts Division'), t('FCC Fine, Performing and Communication Arts Division'), t('FCC Fine, Performing and Communication Arts Division')),
+  '#options' => array(t('FCC Applied Technology Division'), t('FCC Fine, Performing and Communication Arts Division'), t('FCC Health Sciences Division'), t('FCC Humanities Division'), t('FCC Math, Science and Engineering Division')),
 );
 
   // Adds a simple submit button that refreshes the form and clears its contents -- this is the default behavior for forms.
