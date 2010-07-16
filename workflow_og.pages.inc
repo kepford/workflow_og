@@ -8,7 +8,7 @@
  *Menu callbacks for Workflow_og.
  */ 
 
-function workflow_og_promote(&$form, &$form_state) {
+function workflow_og_promote($form_state) {
   $form['description'] = array(
     '#type' => 'item',
     '#title' => t('Promote application to appropriate group'),
@@ -31,13 +31,11 @@ function workflow_og_promote(&$form, &$form_state) {
   // Adds a new button to clear the form. The #validate property
   // directs the form to use a validation handler function specific
   // to this button instead of using the default handler.
-/*
   $form['clear'] = array(
     '#type' => 'submit',
     '#value' => 'Reset form',
     '#validate' => array('workflow_og_promote_clear'),
   );
-*/
 
   return $form;
 }
@@ -49,9 +47,7 @@ function workflow_og_promote(&$form, &$form_state) {
  * rebuild the form.  We also clear the existing values, although values
  * aren't used in the form builder in this example.
  */
-/*
 function workflow_og_promote_clear($form, &$form_state) {
     $form_state['rebuild'] = TRUE;
     unset($form_state['values']);
 }
-*/
