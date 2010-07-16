@@ -15,11 +15,10 @@ function workflow_og_promote(&$form, &$form_state) {
   );
 
 
-
   $form['promote_audience'] = array(
   '#type' => 'radios', 
   '#title' => t('Assign to Division'), 
-  '#default_value' => variable_get('comment_preview', 1), 
+  '#default_value' => t('FCC Applied Technology Division', 1), 
   '#options' => array(t('FCC Applied Technology Division'), t('FCC Fine, Performing and Communication Arts Division'), t('FCC Health Sciences Division'), t('FCC Humanities Division'), t('FCC Math, Science and Engineering Division')),
 );
 
