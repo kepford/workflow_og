@@ -34,7 +34,7 @@ function workflow_og_promote(&$form, &$form_state) {
   $form['clear'] = array(
     '#type' => 'submit',
     '#value' => 'Reset form',
-    '#validate' => array('form_example_tutorial_8_clear'),
+    '#validate' => array('workflow_og_promote_clear'),
   );
 
   return $form;
@@ -47,7 +47,7 @@ function workflow_og_promote(&$form, &$form_state) {
  * rebuild the form.  We also clear the existing values, although values
  * aren't used in the form builder in this example.
  */
-function form_example_tutorial_8_clear($form, &$form_state) {
+function workflow_og_promote_clear($form, &$form_state) {
     $form_state['rebuild'] = TRUE;
     unset($form_state['values']);
 }
