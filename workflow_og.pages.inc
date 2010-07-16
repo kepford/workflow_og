@@ -15,11 +15,13 @@ function workflow_og_promote(&$form, &$form_state) {
   );
 
 
+/*
   $form['promote_audience'] = array(
   '#type' => 'radios', 
   '#title' => t('Assign to Division'), 
   '#options' => array(t('FCC Applied Technology Division'), t('FCC Fine, Performing and Communication Arts Division'), t('FCC Health Sciences Division'), t('FCC Humanities Division'), t('FCC Math, Science and Engineering Division')),
 );
+*/
 
 
   // Adds a simple submit button that refreshes the form and clears its contents -- this is the default behavior for forms.
